@@ -45,7 +45,7 @@ namespace DAL
                         cadena verbatim.
 
                          */
-                        var insertFacturaSql = @"INSERT INTO voucherdb.factura (Cliente, Fecha, state) 
+                        var insertFacturaSql = @"INSERT INTO factura (Cliente, Fecha, state) 
                                          VALUES (@Cliente, @Fecha, 1);
                                          SELECT LAST_INSERT_ID();";
 
@@ -107,7 +107,7 @@ namespace DAL
                         // Eliminar detalles
                         foreach (var detalle in eliminados)
                         {
-                            var queryEliminar = "DELETE FROM voucherdb.facturadetalle WHERE Id = @Id";
+                            var queryEliminar = "DELETE FROM facturadetalle WHERE Id = @Id";
                             using (var command = new MySqlCommand(queryEliminar, conn, transaction))
                             {
                                 command.Parameters.AddWithValue("@Id", detalle.Id);
